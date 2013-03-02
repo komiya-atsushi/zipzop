@@ -61,7 +61,7 @@ static void copy_filename_suffix(const char *src, size_t src_size,
   strncpy(buf + 3, src + src_size - copy_len, copy_len);
 }
 
-#define FILENAME_BUF_SIZE 24
+#define FILENAME_BUF_SIZE 32
 
 void recompress_entry(FILE *infile,
 		      FILE *outfile,
@@ -70,8 +70,6 @@ void recompress_entry(FILE *infile,
   char filename[FILENAME_BUF_SIZE + 1];
   copy_filename_suffix(header->ext, header->filename_len, filename, FILENAME_BUF_SIZE);
   filename[FILENAME_BUF_SIZE] = '\0';
-
-  printf("%-24s : %ld -> ", filename, header->comp_size);
 
   size_t src_size = header->comp_size;
   uchar *src = (uchar *)allocate_or_exit(src_size);
@@ -83,6 +81,8 @@ void recompress_entry(FILE *infile,
     free(src);
     return;
   }
+
+  printf("%-32s : %d -> ", filename, src_size);
 
   size_t uncomp_size = header->uncomp_size;
   uchar *tmp = (uchar *)allocate_or_exit(uncomp_size);
@@ -100,7 +100,7 @@ void recompress_entry(FILE *infile,
   }
 
   header->comp_size = dst_size;
-  printf("%d\n", dst_size);
+  printf("%d bytes (%d bytes)\n", dst_size, dst_size - src_size);
 
   write_local_file_header(outfile, header);
   write_bytes(dst, dst_size, outfile);

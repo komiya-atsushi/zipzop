@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #include "zipzop.h"
 
@@ -32,7 +31,7 @@ void read_header(FILE *infile, Header *header) {
   }
 }
 
-bool recompress_zip(FILE *infile, FILE *outfile, int num_iterations) {
+void recompress_zip(FILE *infile, FILE *outfile, int num_iterations) {
   Header *header = (Header *)allocate_or_exit(65536 * 3 + 256);
   CompressionResult *comp_result
     = (CompressionResult *)allocate_or_exit(sizeof(CompressionResult) * 65537);
@@ -80,8 +79,14 @@ bool recompress_zip(FILE *infile, FILE *outfile, int num_iterations) {
 
   free(header);
   free(comp_result);
+}
 
-  return true;
+void show_result_size(FILE *infile, FILE *outfile) {
+  size_t orig = ftell(infile);
+  size_t recomp = ftell(outfile);
+
+  u32 diff = (int)recomp - orig;
+  printf("\noriginal -> recompressed\n\t%d -> %d bytes (%ld bytes)\n", orig, recomp, diff);
 }
 
 int main(int argc, char **argv) {
@@ -92,7 +97,7 @@ int main(int argc, char **argv) {
 
   int num_iterations = atoi(argv[1]);
   if (num_iterations <= 0) {
-    printf("ERROR: Invalid iteration count : %s\n", argv[1]);
+    printf("ERROR: Invalid iteration count: %s\n", argv[1]);
   }
 
   FILE *infile = fopen(argv[2], "rb");
@@ -108,6 +113,10 @@ int main(int argc, char **argv) {
   }
 
   recompress_zip(infile, outfile, num_iterations);
+  show_result_size(infile, outfile);
+
+  fclose(infile);
+  fclose(outfile);
 
   return 0;
 }
