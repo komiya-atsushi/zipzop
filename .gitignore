@@ -18,6 +18,7 @@
 zipzop
 
 # From zopfli files
+zopfli
 zopfli/*
 deflate.h
 util.h
