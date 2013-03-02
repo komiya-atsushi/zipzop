@@ -26,7 +26,7 @@ Google による deflate 圧縮アルゴリズムの圧縮率最適化実装 [zo
 以下のコマンドを実行することで、実行可能なバイナリ `zipzop` が生成されます。
 
     $ git clone git://github.com/komiya-atsushi/zipzop.git
-    $ ./build.sh
+    $ make
 
 `make install` みたいな気の利いたものは用意していませんので、適当に `zipzop` をお使いください。
 
