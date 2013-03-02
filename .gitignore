@@ -15,3 +15,11 @@
 *.exe
 *.out
 *.app
+zipzop
+
+# From zopfli files
+zopfli/*
+deflate.h
+util.h
+
+*~
