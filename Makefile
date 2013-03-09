@@ -9,7 +9,7 @@ OPT_LDFLAGS =
 LDFLAGS = -lz -lm $(OPT_LDFLAGS)
 
 ZIPZOP_OBJS = header.o recompress.o zz_util.o zipzop.o
-ZOPFLI_OBJS = blocksplitter.o cache.o deflate.o hash.o katajainen.o lz77.o squeeze.o tree.o util.o
+ZOPFLI_OBJS = blocksplitter.o cache.o deflate.o hash.o katajainen.o lz77.o squeeze.o tree.o util.o zopfli_lib.o zlib_container.o gzip_container.o
 OBJS = $(ZOPFLI_OBJS) $(ZIPZOP_OBJS)
 
 E = 
@@ -46,6 +46,12 @@ tree.o: zopfli/tree.c
 	$(CC) $< $(CFLAGS)
 util.o: zopfli/util.c
 	$(CC) $< $(CFLAGS)
+zopfli_lib.o: zopfli/zopfli_lib.c
+	$(CC) $< $(CFLAGS)
+zlib_container.o: zopfli/zlib_container.c
+	$(CC) $< $(CFLAGS)
+gzip_container.o: zopfli/gzip_container.c
+	$(CC) $< $(CFLAGS)
 
 zopfli/blocksplitter.c: zopfli
 zopfli/cache.c: zopfli
@@ -57,6 +63,9 @@ zopfli/lz77.c: zopfli
 zopfli/squeeze.c: zopfli
 zopfli/tree.c: zopfli
 zopfli/util.c: zopfli
+zopfli/zopfli_lib.c: zopfli
+zopfli/zlib_container.c: zopfli
+zopfli/gzip_container.c: zopfli
 
 zopfli:
 	git clone https://code.google.com/p/zopfli/
