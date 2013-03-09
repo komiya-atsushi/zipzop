@@ -56,12 +56,12 @@ static void inflate_src(uchar *src, size_t src_size,
 static void zopfli_deflate(const uchar *src, size_t src_size,
 			   uchar **dst_p, size_t *dst_size_p,
 			   int num_iterations) {
-  Options options;
-  InitOptions(&options);
+  ZopfliOptions options;
+  ZopfliInitOptions(&options);
   options.numiterations = num_iterations;
 
   uchar b = 0;
-  Deflate(&options, 2, 1,
+  ZopfliDeflate(&options, 2, 1,
 	  src, src_size,
 	  &b,
 	  dst_p, dst_size_p);
