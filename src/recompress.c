@@ -21,6 +21,8 @@
  *    distribution.
  */
 
+#include <string.h>
+
 #include <zlib.h>
 #include "zipzop.h"
 #include "deflate.h"
