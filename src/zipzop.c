@@ -109,7 +109,7 @@ void show_result_size(FILE *infile, FILE *outfile) {
   size_t recomp = ftell(outfile);
 
   u32 diff = (int)recomp - orig;
-  printf("\noriginal -> recompressed\n\t%d -> %d bytes (%ld bytes)\n", orig, recomp, diff);
+  printf("\noriginal -> recompressed\n\t%zd -> %zd bytes (%ld bytes)\n", orig, recomp, diff);
 }
 
 int main(int argc, char **argv) {
