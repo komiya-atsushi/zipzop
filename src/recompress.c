@@ -21,6 +21,8 @@
  *    distribution.
  */
 
+#include <string.h>
+
 #include <zlib.h>
 #include "zipzop.h"
 #include "deflate.h"
@@ -105,7 +107,7 @@ void recompress_entry(FILE *infile,
     return;
   }
 
-  printf("%-32s : %d -> ", filename, src_size);
+  printf("%-32s : %zd -> ", filename, src_size);
 
   size_t uncomp_size = header->uncomp_size;
   uchar *tmp = (uchar *)allocate_or_exit(uncomp_size);
@@ -123,7 +125,7 @@ void recompress_entry(FILE *infile,
   }
 
   header->comp_size = dst_size;
-  printf("%d bytes (%d bytes)\n", dst_size, dst_size - src_size);
+  printf("%zd bytes (%zd bytes)\n", dst_size, dst_size - src_size);
 
   write_local_file_header(outfile, header);
   write_bytes(dst, dst_size, outfile);
