@@ -20,52 +20,52 @@ $(TARGET): $(OBJS)
 	strip $(TARGET)
 
 header.o: src/header.c
-	$(CC) $< -I./zopfli $(CFLAGS)
-recompress.o: src/recompress.c zopfli/deflate.h
-	$(CC) $< -I./zopfli $(CFLAGS)
+	$(CC) $< -I./zopfli/src/zopfli $(CFLAGS)
+recompress.o: src/recompress.c zopfli/src/zopfli/deflate.h
+	$(CC) $< -I./zopfli/src/zopfli $(CFLAGS)
 zz_util.o: src/zz_util.c
-	$(CC) $< -I./zopfli $(CFLAGS)
+	$(CC) $< -I./zopfli/src/zopfli $(CFLAGS)
 zipzop.o: src/zipzop.c
-	$(CC) $< -I./zopfli $(CFLAGS)
+	$(CC) $< -I./zopfli/src/zopfli $(CFLAGS)
 
-blocksplitter.o: zopfli/blocksplitter.c
+blocksplitter.o: zopfli/src/zopfli/blocksplitter.c
 	$(CC) $< $(CFLAGS)
-cache.o: zopfli/cache.c
+cache.o: zopfli/src/zopfli/cache.c
 	$(CC) $< $(CFLAGS)
-deflate.o: zopfli/deflate.c
+deflate.o: zopfli/src/zopfli/deflate.c
 	$(CC) $< $(CFLAGS)
-hash.o: zopfli/hash.c
+hash.o: zopfli/src/zopfli/hash.c
 	$(CC) $< $(CFLAGS)
-katajainen.o: zopfli/katajainen.c
+katajainen.o: zopfli/src/zopfli/katajainen.c
 	$(CC) $< $(CFLAGS)
-lz77.o: zopfli/lz77.c
+lz77.o: zopfli/src/zopfli/lz77.c
 	$(CC) $< $(CFLAGS)
-squeeze.o: zopfli/squeeze.c
+squeeze.o: zopfli/src/zopfli/squeeze.c
 	$(CC) $< $(CFLAGS)
-tree.o: zopfli/tree.c
+tree.o: zopfli/src/zopfli/tree.c
 	$(CC) $< $(CFLAGS)
-util.o: zopfli/util.c
+util.o: zopfli/src/zopfli/util.c
 	$(CC) $< $(CFLAGS)
-zopfli_lib.o: zopfli/zopfli_lib.c
+zopfli_lib.o: zopfli/src/zopfli/zopfli_lib.c
 	$(CC) $< $(CFLAGS)
-zlib_container.o: zopfli/zlib_container.c
+zlib_container.o: zopfli/src/zopfli/zlib_container.c
 	$(CC) $< $(CFLAGS)
-gzip_container.o: zopfli/gzip_container.c
+gzip_container.o: zopfli/src/zopfli/gzip_container.c
 	$(CC) $< $(CFLAGS)
 
-zopfli/blocksplitter.c: zopfli
-zopfli/cache.c: zopfli
-zopfli/deflate.c: zopfli
-zopfli/deflate.h: zopfli
-zopfli/hash.c: zopfli
-zopfli/katajainen.c: zopfli
-zopfli/lz77.c: zopfli
-zopfli/squeeze.c: zopfli
-zopfli/tree.c: zopfli
-zopfli/util.c: zopfli
-zopfli/zopfli_lib.c: zopfli
-zopfli/zlib_container.c: zopfli
-zopfli/gzip_container.c: zopfli
+zopfli/src/zopfli/blocksplitter.c: zopfli
+zopfli/src/zopfli/cache.c: zopfli
+zopfli/src/zopfli/deflate.c: zopfli
+zopfli/src/zopfli/deflate.h: zopfli
+zopfli/src/zopfli/hash.c: zopfli
+zopfli/src/zopfli/katajainen.c: zopfli
+zopfli/src/zopfli/lz77.c: zopfli
+zopfli/src/zopfli/squeeze.c: zopfli
+zopfli/src/zopfli/tree.c: zopfli
+zopfli/src/zopfli/util.c: zopfli
+zopfli/src/zopfli/zopfli_lib.c: zopfli
+zopfli/src/zopfli/zlib_container.c: zopfli
+zopfli/src/zopfli/gzip_container.c: zopfli
 
 zopfli:
 	git clone https://code.google.com/p/zopfli/
