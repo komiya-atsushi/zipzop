@@ -18,8 +18,14 @@
 zipzop
 
 # From zopfli files
-zopfli*
+#zopfli*
 
 zlib*
 
 *~
+
+# Visual Studio binary folders
+Debug/
+Release/
+bin/
+x64/

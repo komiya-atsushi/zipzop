@@ -12,6 +12,7 @@ Google による deflate 圧縮アルゴリズムの圧縮率最適化実装 [zo
 
 必要なもの
 ----------
+※Windows版については巻末参照
 
  - [zlib](http://www.zlib.net/)
    - deflate 圧縮されたアーカイブ内のファイルを復元するために利用しています。
@@ -58,4 +59,18 @@ zlib / libpng ライセンスです。詳しくは license.txt をお読み下�
  - zopfli ( Copyright 2011 Google Inc. All Rights Reserved. )
  - zlib ( Copyright 1995-2012 Jean-loup Gailly and Mark Adler. )
 
-   
+Wnidows版について
+----
+
+Visual Studio 2017(Communty Edition可)を用いてWindowsのexeファイルとしてビルドすることができます。
+
+使用する以下のライブラリはNuGetまたはソースのインポート済みなので別途用意する必要はありません。
+- zlib from NuGet
+- zopfli from https://github.com/echovoice/zopfli
+
+zipzop.slnをVisual Studio 2017で開き、"ビルド" > "ソリューションのビルド"を実行してください。
+- プラットフォーム"Win32"でビルド → zipzop.exe(32bit版)
+- プラットフォーム"x64"でビルド → zipzop-x64.exe(64bit版)
+（Debug/またはRelease/フォルダ配下に生成）
+
+バイナリはstaticビルドされていますのでexeファイルのみで実行できます。別途ランタイムのインストールは不要です。
