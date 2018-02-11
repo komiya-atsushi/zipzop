@@ -25,7 +25,11 @@
 
 #include <zlib.h>
 #include "zipzop.h"
+#ifdef _WIN32
+#include "../zopfli-master/zopfli/src/zopfli/deflate.h"
+#else
 #include "deflate.h"
+#endif
 
 const int METHOD_DEFLATE = 8;
 
