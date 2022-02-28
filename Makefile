@@ -36,7 +36,7 @@ zipzop.o: src/zipzop.c
 	$(CC) $< $(CFLAGS) $(INCLUDES)
 
 
-zopfli: $(ZOPFLI_OBJS)
+zopfli: zopfli
 	git clone https://github.com/google/zopfli
 	make -C zopfli
 
