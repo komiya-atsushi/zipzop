@@ -32,16 +32,16 @@ There are no nice thing like `make install`, so please use `zipzop` appropriatel
 
     $ zipzop NUM_ITERATIONS IN_FILE OUT_FILE
 
- --`NUM_ITERATIONS` ... The number of times to work hard on compression optimization. Specify a number greater than or equal to 1. The larger the value, the better the compression ratio will be, but the processing time will increase in proportion to the value.
- --`IN_FILE` ... Specify the Zip archive you want to recompress.
- --`OUT_FILE` ... Specifies the name of the Zip archive after recompression. Please note that it will overwrite the existing file and try to output it.
+ -`NUM_ITERATIONS` ... The number of times to work hard on compression optimization. Specify a number greater than or equal to 1. The larger the value, the better the compression ratio will be, but the processing time will increase in proportion to the value.
+ -`IN_FILE` ... Specify the Zip archive you want to recompress.
+ -`OUT_FILE` ... Specifies the name of the Zip archive after recompression. Please note that it will overwrite the existing file and try to output it.
 
 
 Limitations
 ----
 
- -- Only deflate-compressed files can be recompressed. Files compressed by other compression methods, including deflate64, are output to the archive as is without being recompressed.
- -- Cannot process encrypted Zip archives.
+ - Only deflate-compressed files can be recompressed. Files compressed by other compression methods, including deflate64, are output to the archive as is without being recompressed.
+ - Cannot process encrypted Zip archives.
 
 
 License
@@ -55,6 +55,6 @@ Acknowledgments
 
 This program uses the following libraries:
 
- -- zopfli (Copyright 2011 Google Inc. All Rights Reserved.)
- -- zlib (Copyright 1995-2012 Jean-loup Gailly and Mark Adler.)
+ - zopfli (Copyright 2011 Google Inc. All Rights Reserved.)
+ - zlib (Copyright 1995-2012 Jean-loup Gailly and Mark Adler.)
 
