@@ -23,6 +23,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "zipzop.h"
 
@@ -70,7 +71,7 @@ void recompress_zip(FILE *infile, FILE *outfile, int num_iterations) {
     if (IS_LOCAL_FILE_HEADER(header->signature)) {
       LocalFileHeader *_header = (LocalFileHeader *)header;
       comp_result[file_count].offset = ftell(outfile);
-      
+
       recompress_entry(infile, outfile, _header, num_iterations);
 
       comp_result[file_count].comp_size = _header->comp_size;
@@ -79,7 +80,7 @@ void recompress_zip(FILE *infile, FILE *outfile, int num_iterations) {
 
     } else if (IS_CENTRAL_DIRECTORY_FILE_HEADER(header->signature)) {
       if (central_dir_offset == 0xffffffff) {
-	central_dir_offset = ftell(outfile);
+        central_dir_offset = ftell(outfile);
       }
       CentralDirectoryFileHeader *_header = (CentralDirectoryFileHeader *)header;
 
@@ -122,6 +123,11 @@ int main(int argc, char **argv) {
   if (num_iterations <= 0) {
     printf("ERROR: Invalid iteration count: %s\n", argv[1]);
   }
+
+  if (strcmp(argv[2], argv[3]) == 0) {
+    printf("ERROR: input file specified as output: %s\n", argv[3]);
+    return 1;
+    }
 
   FILE *infile = fopen(argv[2], "rb");
   if (infile == NULL) {
