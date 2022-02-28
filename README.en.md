@@ -14,10 +14,10 @@ Things necessary
 ----
 
  - [zlib](http://www.zlib.net/)
-   - deflate Used to restore files in compressed archives.
+   - deflate is used to decompress files in compressed archives.
 
  - [git](https://git-scm.com/)
- - [zopfli](https://github.com/google/zopfli) It is used to get the source code of zopfli.
+   - It is used to get the source code of [zopfli](https://github.com/google/zopfli).
 
 
 How to use
@@ -40,11 +40,11 @@ There are no nice thing like `make install`, so please use `zipzop` appropriatel
 Limitations
 ----
 
- --Only deflate-compressed files can be recompressed. Files compressed by other compression methods, including deflate64, are output to the archive as is without being recompressed.
- --Cannot process encrypted Zip archives.
+ -- Only deflate-compressed files can be recompressed. Files compressed by other compression methods, including deflate64, are output to the archive as is without being recompressed.
+ -- Cannot process encrypted Zip archives.
 
 
-Licence
+License
 ----
 
 zlib / libpng license. Please read license.txt for details.
@@ -53,7 +53,8 @@ zlib / libpng license. Please read license.txt for details.
 Acknowledgments
 ----
 
-This program uses the following libraries.
+This program uses the following libraries:
 
- --zopfli (Copyright 2011 Google Inc. All Rights Reserved.)
- --zlib (Copyright 1995-2012 Jean-loup Gailly and Mark Adler.)
+ -- zopfli (Copyright 2011 Google Inc. All Rights Reserved.)
+ -- zlib (Copyright 1995-2012 Jean-loup Gailly and Mark Adler.)
+
