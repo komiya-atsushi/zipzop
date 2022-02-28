@@ -73,11 +73,11 @@ static void copy_filename_suffix(const char *src, size_t src_size,
 				 char *buf, size_t buf_size) {
   if (src_size <= buf_size) {
     strncpy(buf, src, src_size);
-    
+
     if (src_size < buf_size) {
       buf[src_size] = '\0';
     }
-    
+
     return;
   }
 
@@ -99,7 +99,7 @@ void recompress_entry(FILE *infile,
   size_t src_size = header->comp_size;
   uchar *src = (uchar *)allocate_or_exit(src_size);
   read_bytes(src, src_size, infile);
-  
+
   if (header->method != METHOD_DEFLATE) {
     write_local_file_header(outfile, header);
     write_bytes(src, src_size, outfile);
@@ -132,4 +132,5 @@ void recompress_entry(FILE *infile,
 
   free(dst);
   free(src);
+  free(tmp);
 }
