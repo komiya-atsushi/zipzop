@@ -1,61 +1,60 @@
 zipzop
 ======
 
-Zip archive recompressor with Google's zopfli library.
+Zip archive recompressor using Google's zopfli library.
 
 
-概要
+Overview
 ----
 
-Google による deflate 圧縮アルゴリズムの圧縮率最適化実装 [zopfli](https://code.google.com/p/zopfli/) を利用して Zip アーカイブを圧縮し直し、アーカイブサイズの削減を試みるツールです。
+Zipzop is recompression tool that uses Google's compression ratio optimization implementation of the deflate compression algorithm [zopfli](https://github.com/google/zopfli) recompress Zip archives and try to reduce the archive size.
 
 
-必要なもの
-----------
+Things necessary
+----
 
  - [zlib](http://www.zlib.net/)
-   - deflate 圧縮されたアーカイブ内のファイルを復元するために利用しています。
+   - deflate is used to decompress files in compressed archives.
 
- - git
-   - zopfli のソースコードを取得する際に利用しています。
+ - [git](https://git-scm.com/)
+   - It is used to get the source code of [zopfli](https://github.com/google/zopfli).
 
 
-使い方
-------
+How to use
+----
 
-以下のコマンドを実行することで、実行可能なバイナリ `zipzop` が生成されます。
+The following command will generate an executable binary `zipzop`.
 
-    $ git clone git://github.com/komiya-atsushi/zipzop.git
+    $ git clone git: //github.com/komiya-atsushi/zipzop.git
     $ make
 
-`make install` みたいな気の利いたものは用意していませんので、適当に `zipzop` をお使いください。
+There are no nice thing like `make install`, so please use `zipzop` appropriately.
 
     $ zipzop NUM_ITERATIONS IN_FILE OUT_FILE
 
- - `NUM_ITERATIONS` ... 圧縮最適化を頑張る回数です。1 以上の数値を指定します。大きな値を指定すればするほどちょっとずつ圧縮率が改善しますが、数値に比例して処理時間がかかるようになります。
- - `IN_FILE` ... 再圧縮したい Zip アーカイブを指定します。
- - `OUT_FILE` ... 再圧縮後の Zip アーカイブの名前を指定します。既存のファイルを上書きして出力しようとするのでご注意ください。
+ - `NUM_ITERATIONS` ... The number of times to work hard on compression optimization. Specify a number greater than or equal to 1. The larger the value, the better the compression ratio will be, but the processing time will increase in proportion to the value.
+ - `IN_FILE` ... Specify the Zip archive you want to recompress.
+ - `OUT_FILE` ... Specifies the name of the Zip archive after recompression. Please note that it will overwrite the existing file and try to output it.
 
 
-制限
+Limitations
 ----
 
- - 再圧縮ができるのは deflate 圧縮されたファイルのみです。deflate64 を含め、その他の圧縮メソッドにより圧縮されたファイルは再圧縮せずにそのままアーカイブに出力されます。
- - 暗号化された Zip アーカイブは処理できません。
+ - Only deflate-compressed files can be recompressed. Files compressed by other compression methods, including deflate64, are output to the archive as is without being recompressed.
+ - Cannot process encrypted Zip archives.
 
 
-ライセンス
-----------
-
-zlib / libpng ライセンスです。詳しくは license.txt をお読み下さい。
-
-
-謝辞
+License
 ----
 
-このプログラムは以下のライブラリを利用しています。
+zlib / libpng license. Please read license.txt for details.
 
- - zopfli ( Copyright 2011 Google Inc. All Rights Reserved. )
- - zlib ( Copyright 1995-2012 Jean-loup Gailly and Mark Adler. )
 
-   
+Acknowledgments
+----
+
+This program uses the following libraries:
+
+ - zopfli (Copyright 2011 Google Inc. All Rights Reserved.)
+ - zlib (Copyright 1995-2012 Jean-loup Gailly and Mark Adler.)
+
